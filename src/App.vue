@@ -1,32 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <m-header />
+    <tab />
+    <!-- keep-alive包裹可以使得返回到之前的页面，页面的状态依然保持 -->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script type="text/ecmascript-6">
+import MHeader from 'components/m-header/m-header.vue'
+import Tab from 'components/tab/tab.vue'
 
-#nav {
-  padding: 30px;
+export default {
+  components: {
+    MHeader,
+    Tab
+  }
 }
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped lang="stylus" rel="stylesheet/stylus">
+@import 'common/stylus/variable.styl'
 </style>
